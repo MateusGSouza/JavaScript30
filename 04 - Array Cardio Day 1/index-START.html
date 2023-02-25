@@ -76,8 +76,22 @@
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    // reduce will iterate through an array and "do something", until there is no element left
+    // and then will return a final value. In this case, it will calculate each inventor life span
+    // and sum it in the variable  total. Can be used to sum all elements of an array, for example
+    // "0" is the starting point, since there is "return value of the previous calculation" the first time it runs
+    const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0);
 
     // 5. Sort the inventors by years lived
+    console.log("Sort the inventors by years lived")
+    const oldest = inventors.sort((a, b) => {
+      const lastPerson = a.passed - a.year;
+      const nextPerson = b.passed - a.year;
+      return lastPerson > nextPerson ? -1 : 1;
+    });
+    console.table(oldest)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
