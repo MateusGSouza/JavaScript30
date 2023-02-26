@@ -73,13 +73,14 @@
     const shortOrdered = inventors.sort((a,b) => a.year > b.year ? 1 : -1);
     console.table(shortOrdered);
 
-
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+
     // reduce will iterate through an array and "do something", until there is no element left
     // and then will return a final value. In this case, it will calculate each inventor life span
     // and sum it in the variable  total. Can be used to sum all elements of an array, for example
     // "0" is the starting point, since there is "return value of the previous calculation" the first time it runs
+
     const totalYears = inventors.reduce((total, inventor) => {
       return total + (inventor.passed - inventor.year);
     }, 0);
@@ -95,6 +96,16 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+    // First: inspect the page and see what is the container of the items (each Boulevard on the list)
+    const category = document.querySelector(".mw-category");
+    const links = Array.from(category.querySelectorAll("a"));
+    // querySelector returns a nodelist, to use most of the array methods, converting it to an array is necessary
+    
+    const includesDe = links
+                        .map(link => link.textContent)
+                        .filter(streetName => streetName.includes("de"));
+                        
 
 
     // 7. sort Exercise
