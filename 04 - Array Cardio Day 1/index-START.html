@@ -118,6 +118,16 @@
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const transportation = data.reduce((obj, item) => {
+      // if there is no object present yet, like car, for example, create { "car": 0 } 
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+      // start with an empty object {}
+    }, {});
+    
   </script>
 </body>
 </html>
